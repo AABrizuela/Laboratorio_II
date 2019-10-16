@@ -30,9 +30,10 @@
         {
             this.txtArchivo = new System.Windows.Forms.TextBox();
             this.cmbPath = new System.Windows.Forms.ComboBox();
-            this.lstTexto = new System.Windows.Forms.ListBox();
             this.btnLeer = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtBuffer = new System.Windows.Forms.TextBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtArchivo
@@ -52,17 +53,9 @@
             this.cmbPath.Sorted = true;
             this.cmbPath.TabIndex = 1;
             // 
-            // lstTexto
-            // 
-            this.lstTexto.FormattingEnabled = true;
-            this.lstTexto.Location = new System.Drawing.Point(11, 113);
-            this.lstTexto.Name = "lstTexto";
-            this.lstTexto.Size = new System.Drawing.Size(430, 199);
-            this.lstTexto.TabIndex = 2;
-            // 
             // btnLeer
             // 
-            this.btnLeer.Location = new System.Drawing.Point(84, 320);
+            this.btnLeer.Location = new System.Drawing.Point(50, 320);
             this.btnLeer.Name = "btnLeer";
             this.btnLeer.Size = new System.Drawing.Size(75, 23);
             this.btnLeer.TabIndex = 3;
@@ -72,7 +65,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(301, 320);
+            this.btnGuardar.Location = new System.Drawing.Point(188, 320);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 4;
@@ -80,18 +73,38 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // txtBuffer
+            // 
+            this.txtBuffer.Location = new System.Drawing.Point(11, 112);
+            this.txtBuffer.Multiline = true;
+            this.txtBuffer.Name = "txtBuffer";
+            this.txtBuffer.Size = new System.Drawing.Size(430, 202);
+            this.txtBuffer.TabIndex = 5;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(317, 320);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 6;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // Archivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 355);
+            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.txtBuffer);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnLeer);
-            this.Controls.Add(this.lstTexto);
             this.Controls.Add(this.cmbPath);
             this.Controls.Add(this.txtArchivo);
             this.Name = "Archivos";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Archivos";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,9 +114,10 @@
 
         private System.Windows.Forms.TextBox txtArchivo;
         private System.Windows.Forms.ComboBox cmbPath;
-        private System.Windows.Forms.ListBox lstTexto;
         private System.Windows.Forms.Button btnLeer;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.TextBox txtBuffer;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

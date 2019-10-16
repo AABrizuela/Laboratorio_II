@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
 
 namespace Clase_11.WindowsForm
 {
@@ -16,7 +17,7 @@ namespace Clase_11.WindowsForm
         public Archivos()
         {
             InitializeComponent();
-            foreach (Environment.SpecialFolder item in Enum.GetValues(typeof (Environment.SpecialFolder)))
+            foreach (Environment.SpecialFolder item in Enum.GetValues(typeof(Environment.SpecialFolder)))
             {
                 cmbPath.Items.Add(item);
             }
@@ -26,21 +27,67 @@ namespace Clase_11.WindowsForm
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            using (StreamWriter streamWriter = new StreamWriter(Environment.GetFolderPath((Environment.SpecialFolder)cmbPath.SelectedItem) + "\\" + txtArchivo.Text))
+            try
             {
-                streamWriter.WriteLine(txtArchivo.Text);
+                using (StreamWriter streamWriter = new StreamWriter(Environment.GetFolderPath((Environment.SpecialFolder)cmbPath.SelectedItem) + "\\" + txtArchivo.Text, true))
+                {
+                    streamWriter.WriteLine(txtBuffer.Text);
+                }
+            }
+            catch (FileNotFoundException exception)
+            {
+                SystemSounds.Exclamation.Play();
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (DirectoryNotFoundException exception)
+            {
+                SystemSounds.Exclamation.Play();
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (Exception exception)
+            {
+                SystemSounds.Exclamation.Play();
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnLeer_Click(object sender, EventArgs e)
         {
-            using (StreamReader streamReader = new StreamReader(Environment.GetFolderPath((Environment.SpecialFolder)cmbPath.SelectedItem) + "\\" + txtArchivo.Text)
+            try
             {
-                if (streamReader != null)
+                using (StreamReader streamReader = new StreamReader(Environment.GetFolderPath((Environment.SpecialFolder)cmbPath.SelectedItem) + "\\" + txtArchivo.Text, true))
                 {
-                    streamReader.
+                    if (streamReader != null)
+                    {
+                        txtBuffer.Text = streamReader.ReadToEnd();
+                    }
                 }
             }
+            catch (FileNotFoundException exception)
+            {
+                SystemSounds.Exclamation.Play();
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (DirectoryNotFoundException exception)
+            {
+                SystemSounds.Exclamation.Play();
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (Exception exception)
+            {
+                SystemSounds.Exclamation.Play();
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nos vemos en el corso");
+            this.Close();
         }
     }
 }
