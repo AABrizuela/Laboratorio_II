@@ -65,18 +65,18 @@ namespace Clase_05.Entidades
             return !(pluma._tinta == tinta);
         }
 
-        public static bool operator +(Pluma pluma, Tinta tinta)
+        public static Pluma operator +(Pluma pluma, Tinta tinta)
         {
             if(pluma._tinta == tinta && pluma._cantidad < 100)
             {
-                while(pluma._cantidad != 100)
+                while(pluma._cantidad < 100)
                 {
                     pluma._cantidad++;
                 }
-                return true;
+                return pluma;
             }
 
-            return false;
+            return pluma;
         }
         #endregion
     }

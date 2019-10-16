@@ -21,7 +21,7 @@ namespace Clase_01.Introduccion
             //Console.ForegroundColor = ConsoleColor.Magenta;
             //System.Console.WriteLine("asdfqwer");//printf("asdfqwer\n");
             Console.WriteLine("Hola Mundo C#");//printf("qwerasdf");
-            
+
             Console.WriteLine("Mi nombre es {0} y mi apellido {1}", nombre, apellido);
 
             Console.WriteLine("Como es tu nombre?");

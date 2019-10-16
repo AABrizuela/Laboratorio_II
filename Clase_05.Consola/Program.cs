@@ -12,14 +12,14 @@ namespace Clase_05.Consola
         static void Main(string[] args)
         {
             Tinta tinta = new Tinta();
-            Pluma pluma = new Pluma();
+            Pluma pluma = new Pluma("Bic", tinta, 100);
 
             string tintaB = (string)tinta;
             tintaB = pluma;
 
-            pluma =  pluma + tinta;
-                                    
-            Console.WriteLine(Tinta.Mostrar(tinta)); 
+            pluma = pluma + tinta;
+
+            Console.WriteLine(Tinta.Mostrar(tinta));
 
             Console.ReadKey();
         }

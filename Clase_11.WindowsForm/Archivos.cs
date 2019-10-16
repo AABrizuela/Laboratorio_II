@@ -33,6 +33,7 @@ namespace Clase_11.WindowsForm
                 {
                     streamWriter.WriteLine(txtBuffer.Text);
                 }
+                MessageBox.Show("Se ha guardado el archvivo en: " + Environment.GetFolderPath((Environment.SpecialFolder)cmbPath.SelectedItem) + "\\" + txtArchivo.Text);
             }
             catch (FileNotFoundException exception)
             {

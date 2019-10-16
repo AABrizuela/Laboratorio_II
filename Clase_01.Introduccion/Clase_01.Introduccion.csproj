@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1EB29B2A-4D1F-4101-87CC-20013BA5199D}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>Introduccion</RootNamespace>
-    <AssemblyName>1.- Introduccion</AssemblyName>
+    <ProjectGuid>{9714B1F5-A4A2-43C4-A8F3-4C4B5466ED33}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Clase_01.Introduccion</RootNamespace>
+    <AssemblyName>Clase_01.Introduccion</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,9 +31,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

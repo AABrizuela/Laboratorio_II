@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Class.08.Entidades">
-      <HintPath>..\Class.08.Entidades\bin\Debug\Class.08.Entidades.dll</HintPath>
+    <Reference Include="Clase_08.Entidades">
+      <HintPath>..\Clase_08.Entidades\bin\Debug\Clase_08.Entidades.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

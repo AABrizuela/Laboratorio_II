@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Class._08.Entidades
+namespace Clase_08.Entidades
 {
     public class Libro
     {
