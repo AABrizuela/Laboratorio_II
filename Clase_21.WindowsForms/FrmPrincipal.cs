@@ -23,6 +23,8 @@ namespace AdminPersonas
 
         private DataTable tablaPersonas;
 
+        private SqlDataAdapter sqlAdapter;
+        
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -139,23 +141,65 @@ namespace AdminPersonas
 
         private void CargarDataTable()
         {
-            using (this.conexionSql = new SqlConnection(Properties.Settings.Default.Conexion))
-            {
+            //using (this.conexionSql = new SqlConnection(Properties.Settings.Default.Conexion))
+            //{
                 try
                 {
-                    this.conexionSql.Open();
+                    this.conexionSql = new SqlConnection(Properties.Settings.Default.Conexion);
+                    //this.conexionSql.Open();
                     SqlCommand comandoSql = new SqlCommand();
                     comandoSql.Connection = this.conexionSql;
                     comandoSql.CommandType = CommandType.Text;
                     comandoSql.CommandText = "SELECT * FROM Personas";
-                    SqlDataReader dataReader = comandoSql.ExecuteReader();
+                    //SqlDataReader dataReader = comandoSql.ExecuteReader();
 
-                    tablaPersonas.Load(dataReader);
+                    //tablaPersonas.Load(dataReader);
+
+                    this.sqlAdapter = new SqlDataAdapter(comandoSql);
+                    this.sqlAdapter.Fill(this.tablaPersonas);
+                    this.sqlAdapter.InsertCommand = new SqlCommand("INSERT INTO personas VALUES (@nombre, @apellido, @edad)", conexionSql);
+                    this.sqlAdapter.UpdateCommand = new SqlCommand("UPDATE personas SET [nombre] = @nombre, [apellido] = @apellido, [edad] = @edad WHERE id = @where", conexionSql);
+                    this.sqlAdapter.DeleteCommand = new SqlCommand("DELETE FROM personas WHERE id = @id", conexionSql);
+                    sqlAdapter.InsertCommand.Parameters.Add("@nombre", SqlDbType.VarChar, 50, "nombre");
+                    sqlAdapter.InsertCommand.Parameters.Add("@apellido", SqlDbType.VarChar, 50, "apellido");
+                    sqlAdapter.InsertCommand.Parameters.Add("@edad", SqlDbType.Int, 10, "edad");
+
+                    sqlAdapter.UpdateCommand.Parameters.Add("@nombre", SqlDbType.VarChar, 50, "nombre");
+                    sqlAdapter.UpdateCommand.Parameters.Add("@apellido", SqlDbType.VarChar, 50, "apellido");
+                    sqlAdapter.UpdateCommand.Parameters.Add("@edad", SqlDbType.Int, 10, "edad");
+                    sqlAdapter.UpdateCommand.Parameters.Add("@where", SqlDbType.Int, 10, "id");
+
+                    sqlAdapter.DeleteCommand.Parameters.Add("@id", SqlDbType.Int, 10, "id");
+
+                    
                 }
                 catch (Exception excep)
                 {
                     MessageBox.Show(excep.Message);
                 }                
+            //}
+        }
+
+        private void cargarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmVisorDataTable frmDataTable = new FrmVisorDataTable(tablaPersonas);            
+
+            frmDataTable.StartPosition = FormStartPosition.CenterScreen;
+
+            frmDataTable.ShowDialog();
+
+            this.lista = frmDataTable.Lista;
+        }
+
+        private void sincronizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.sqlAdapter.Update(this.tablaPersonas);
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message);                
             }
         }
     }
