@@ -18,7 +18,7 @@ namespace AdminPersonas
 {
     public partial class frmVisorPersona : Form
     {
-        private List<Persona> listaAux;
+        protected List<Persona> listaAux;
 
         private SqlConnection conexionSql;
 
@@ -42,7 +42,7 @@ namespace AdminPersonas
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        protected virtual void btnAgregar_Click(object sender, EventArgs e)
         {
             frmPersona frm = new frmPersona();
             frm.StartPosition = FormStartPosition.CenterScreen;
@@ -74,7 +74,7 @@ namespace AdminPersonas
             }
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        protected virtual void btnModificar_Click(object sender, EventArgs e)
         {
             Persona aux = listaAux[this.lstVisor.SelectedIndex];
             frmPersona frm = new frmPersona(aux.apellido, aux.nombre, aux.Edad);
@@ -109,7 +109,7 @@ namespace AdminPersonas
             this.cargarListBox();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        protected virtual void btnEliminar_Click(object sender, EventArgs e)
         {
             Persona aux = listaAux[this.lstVisor.SelectedIndex];
             frmPersona frm = new frmPersona(aux.apellido, aux.nombre, aux.Edad);
