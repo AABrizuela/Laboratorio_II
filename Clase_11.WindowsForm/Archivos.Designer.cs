@@ -137,7 +137,7 @@
             this.Controls.Add(this.txtArchivo);
             this.Name = "Archivos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Archivos";
+            this.Text = ". ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
