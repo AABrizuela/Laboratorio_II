@@ -76,6 +76,9 @@ namespace AdminPersonas
 
         protected virtual void btnModificar_Click(object sender, EventArgs e)
         {
+            this.btnModificar.Click -= new System.EventHandler(this.btnModificar_Click);
+            this.btnEliminar.Click -= new System.EventHandler(this.btnEliminar_Click);
+
             Persona aux = listaAux[this.lstVisor.SelectedIndex];
             frmPersona frm = new frmPersona(aux.apellido, aux.nombre, aux.Edad);
             frm.StartPosition = FormStartPosition.CenterScreen;
@@ -111,6 +114,9 @@ namespace AdminPersonas
 
         protected virtual void btnEliminar_Click(object sender, EventArgs e)
         {
+            this.btnModificar.Click -= new System.EventHandler(this.btnModificar_Click);
+            this.btnEliminar.Click -= new System.EventHandler(this.btnEliminar_Click);
+
             Persona aux = listaAux[this.lstVisor.SelectedIndex];
             frmPersona frm = new frmPersona(aux.apellido, aux.nombre, aux.Edad);
             frm.StartPosition = FormStartPosition.CenterScreen;
@@ -146,6 +152,22 @@ namespace AdminPersonas
             {
                 this.lstVisor.Items.Add(item.ToString());
             }
+        }
+
+        private void frmVisorPersona_Load(object sender, EventArgs e)
+        {
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+
+            this.lstVisor.SelectedIndexChanged += LstVisor_SelectedIndexChanged;
+        }
+
+        private void LstVisor_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            this.btnModificar.Click -= new System.EventHandler(this.btnModificar_Click);
+            this.btnEliminar.Click -= new System.EventHandler(this.btnEliminar_Click);
+
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
         }
     }
 }

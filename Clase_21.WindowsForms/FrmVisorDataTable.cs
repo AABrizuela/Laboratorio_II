@@ -98,7 +98,7 @@ namespace AdminPersonas
                 //}
 
                 aux[1] = frm.Persona.nombre;
-                aux[2] = frm.Persona.apellido;
+                aux[2] = frm.Persona.apellido; 
                 aux[3] = frm.Persona.Edad;                
             }
             this.cargarDataTable();

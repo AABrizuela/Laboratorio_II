@@ -50,7 +50,7 @@
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            //this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
@@ -60,7 +60,7 @@
             this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            //this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -70,7 +70,7 @@
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            //this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // frmVisorPersona
             // 
@@ -83,6 +83,7 @@
             this.Controls.Add(this.lstVisor);
             this.Name = "frmVisorPersona";
             this.Text = "frmVisorPersona";
+            this.Load += new System.EventHandler(this.frmVisorPersona_Load);
             this.ResumeLayout(false);
 
         }

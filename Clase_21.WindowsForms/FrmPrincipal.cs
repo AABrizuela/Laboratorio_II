@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Clase_20.Entidades;
 using System.Xml.Serialization;
@@ -24,7 +26,9 @@ namespace AdminPersonas
         private DataTable tablaPersonas;
 
         private SqlDataAdapter sqlAdapter;
-        
+
+        Thread nuevoHilo;
+
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -193,13 +197,22 @@ namespace AdminPersonas
 
         private void sincronizarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            nuevoHilo = new Thread(SincronizarDB);
+
+            nuevoHilo.Start();
+        }
+
+        private void SincronizarDB()
+        {
+            try 
             {
                 this.sqlAdapter.Update(this.tablaPersonas);
+
+                Thread.Sleep(2000);
             }
             catch (Exception excep)
             {
-                MessageBox.Show(excep.Message);                
+                MessageBox.Show(excep.Message);
             }
         }
     }
