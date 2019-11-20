@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Clase_20.Entidades;
 using System.Xml.Serialization;
 using System.IO;
 using System.Data.SqlClient;
+
+using Clase_20.Entidades;
+
 
 namespace AdminPersonas
 {

@@ -38,6 +38,7 @@ namespace AdminPersonas
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
+                #region Comentario
                 //try
                 //{
                 //    using (this.conexionSql = new SqlConnection(Properties.Settings.Default.Conexion))
@@ -57,6 +58,7 @@ namespace AdminPersonas
                 //{
                 //    MessageBox.Show(excep.Message);
                 //}
+                #endregion
 
                 DataRow dataRow = DataTable.NewRow();
                 dataRow[1] = frm.Persona.nombre;
